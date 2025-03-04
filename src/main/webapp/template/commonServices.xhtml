@@ -1,0 +1,183 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:f="jakarta.faces.core"
+                xmlns:h="jakarta.faces.html"
+                xmlns:c="jakarta.tags.core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/> 
+
+    <div id="commonServicesGridID" class="common-services-grid">
+        <div class="common-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <h:panelGroup>
+                    <li style="width:100%; height:100%; "> Dons et paiements
+                        <ul  style="width:100%;height:100%;"> 
+                            <h:panelGrid columns="2" cellspacing="5" cellpadding="5" columnClasses="columnFormatPer2, columnFormatPer2" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;  background-color: #ffffb3;">
+                                    <li style="font-weight:bold;color:blue; margin-top:0%;"> Dons
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                            <ul>
+                                                <li><h:link value="Faire un don anonyme" outcome="/donation/faireDonAnonyme.xhtml"/> </li>
+                                                <li><h:link value="Faire un don par type de service" outcome="/donation/faireDonTypeService.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> </li>
+                                                <li><h:link value="Consulter mes dons du mois courant" outcome="/donation/consulterDonsMoisCourant.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> </li>
+                                                <li><h:link value="Consulter mes dons de mois année" outcome="/donation/consulterDonsMoisAnnee.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+
+                                <h:panelGroup rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}" style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top; background-color: #ffffb3">
+                                    <li style="font-weight:bold; color:blue; margin-top:0%;"> Paiements
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;background-color: #ffffb3">
+                                            <ul>
+                                                <li> <h:link value="Effectuer un paiement" outcome="/payment/effectuerPaiement.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ d'un paiement"  outcome="/payment/modifierPaiement.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter un paiement"  outcome="/payment/consulterPaiement.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>  
+                                                </li>
+                                                <li> <h:link value="Consulter les paiements mois année"  outcome="/payment/consulterPaiementsMoisAnnee.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                </h:panelGroup>
+            </ul>
+        </div>
+
+        <div class="common-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <h:panelGroup>
+                    <li style="width:100%; height:100%; "> Partenaires et sponsors
+                        <ul  style="width:100%;height:100%;"> 
+                            <h:panelGrid columns="2" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold;color:blue; margin-top:0%;"> Partenaires
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                            <ul>
+                                                <li><h:link value="Ajouter un partenaire" outcome="/partner/ajouterPartenaire.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> </li>
+                                                <li><h:link value="MAJ un partenaire" outcome="/partner/modifierPartenaire.xhtml" rendered="#{accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> </li>
+                                                <li> <h:link value="Consulter un partenaire" outcome="/partner/consulterPartenaire.xhtml"/> </li>
+                                                <li> <h:link value="Consulter tous les partenaires" outcome="/partner/consulterTousPartenaires.xhtml"/> </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold; color:blue; margin-top:0%;">Sponsors
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal; font-weight:normal;">
+                                            <ul>
+                                                <li> <h:link value="Ajouter un sponsor" outcome="/sponsor/ajouterSponsor.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ d'un sponsor"  outcome="/sponsor/modifierSponsor.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter un sponsor"  outcome="/sponsor/consulterSponsor.xhtml"/>  
+                                                </li>
+                                                <li> <h:link value="Consulter les sponsors mois année"  outcome="/sponsor/consulterSponsorsMoisAnnee.xhtml"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                </h:panelGroup>
+            </ul>
+        </div>
+
+        <div class="common-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <h:panelGroup>
+                    <li style="width:100%; height:100%; "> Cultes du dimanche et clergé
+                        <ul  style="width:100%;height:100%;"> 
+                            <h:panelGrid columns="2" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold;color:blue; margin-top:0%;">Cultes
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                            <ul>
+                                                <li><h:link value="Ajouter un culte" outcome="/regularService/ajouterCulte.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> </li>
+                                                <li><h:link value="MAJ un culte" outcome="/regularService/modifierCulte.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> </li>
+                                                <li> <h:link value="Consulter un culte par date" outcome="/regularService/consulterCulteParDate.xhtml"/> </li>
+                                                <li> <h:link value="Consulter un culte par date" outcome="/regularService/consulterCultesMoisCourant.xhtml"/> </li>
+                                                <li> <h:link value="Consulter les cultes par mois et année" outcome="/regularService/consulterCultesMoisAnnee.xhtml"/> </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold; color:blue; margin-top:0%;">Clergé
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal; font-weight:normal;">
+                                            <ul>
+                                                <li> <h:link value="Ajouter un clerc" outcome="/clergy/ajouterClerc.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ d'un clerc"  outcome="/clergy/modifierClerc.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter un clerc"  outcome="/clergy/consulterClerc.xhtml"/>  
+                                                </li>
+                                                <li> <h:link value="Consulter les clercs par nom"  outcome="/clergy/consulterClercsParNom.xhtml"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                </h:panelGroup>
+            </ul>
+        </div>
+
+        <div class="common-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <h:panelGroup>
+                    <li style="width:100%; height:100%; "> Lieu et mon adresse
+                        <ul  style="width:100%;height:100%;"> 
+                            <h:panelGrid columns="1" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold;color:blue; margin-top:0%;">Lieu
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                            <ul>
+                                                <li><h:link value="Ajouter un lieu" outcome="/address/ajouterLieu.xhtml" rendered="#{accountListener.accountModelView.enableAdmin}"/> </li>
+                                                <li><h:link value="MAJ un lieu" outcome="/address/modifierLieu.xhtml" rendered="#{accountListener.accountModelView.enableAdmin}"/> </li>
+                                                <li> <h:link value="Consulter un lieu" outcome="/address/consulterLieu.xhtml"/> </li>
+                                                <li> <h:link value="Consulter un lieu par ID"  outcome="/address/rechercherLieuParID.xhtml"/> </li>
+                                                <li> <h:link value="Consulter un lieu par nom" outcome="/address/rechercherLieuParNom.xhtml"/> </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+
+                                <h:panelGroup rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}" style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold; color:blue; margin-top:0%;">Mon adresse
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal; font-weight:normal;">
+                                            <ul>
+                                                <li> <h:link value="Ajouter une adresse" outcome="/address/ajouterAdresse.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ une adresse"  outcome="/address/modifierAdresse.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter une adresse"  outcome="/address/consulterAdresse.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>  
+                                                </li>
+                                                <li> <h:link value="Consulter adresse par ID"  outcome="/address/rechercherAdresseParID.xhtml" rendered="#{accountListener.accountModelView.enableVisitor or accountListener.accountModelView.enableMember or accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                </h:panelGroup>
+            </ul>
+        </div>
+    </div>
+</ui:composition>
+

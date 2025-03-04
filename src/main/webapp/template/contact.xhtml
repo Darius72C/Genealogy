@@ -1,0 +1,57 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:f="jakarta.faces.core"
+                xmlns:h="jakarta.faces.html"
+                xmlns:c="jakarta.tags.core"
+                xmlns:p="http://primefaces.org/ui" >
+
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>  
+    <div id="contactPanelID" title="Contact infos" class="contact-grid">
+        <p class="contact-item1"> Contact informations </p>
+        <div class="contact-item"> 
+            <h:panelGrid id="phonePanelID" title="Phone infos" columns="1" cellspacing="20" class="panelContact">
+                <h:panelGroup style="width:100%; height:100%;">
+                    <h:graphicImage id="phoneIconID" value="/images/phone.png" class="imageSize" style="margin-left:30%; margin-right:30%; width:30%; height:30%"/>
+                    <h:outputText id="phoneContactID" value="(225)05560708" style="width:100%;"/>
+                </h:panelGroup>
+            </h:panelGrid>
+        </div> 
+        <div  class="contact-item"> 
+            <h:panelGrid id="youTubePanelID" title="YouTube infos" columns="1"  class="panelContact">
+                <h:link target="https//www.cnn.com"> 
+                    <h:graphicImage id="youTubeIconID" value="/images/youtube.png" class="imageSize" style="width:30%; height:30%"/>
+                </h:link> 
+            </h:panelGrid>
+        </div> 
+        <div class="contact-item"> 
+            <h:panelGrid id="linkedInPanelID" title="LinkedIn infos" columns="1" class="panelContact">
+                <h:link target="https//www.google.com"> 
+                    <h:graphicImage id="linkedInIconID" value="/images/linkedin.png" class="imageSize" style="width:30%; height:30%;"/>
+                </h:link> 
+            </h:panelGrid>
+        </div> 
+        <div  class="contact-item"> 
+            <h:panelGrid id="facebookPanelID" title="Facebook infos" columns="1" class="panelContact">
+                <h:link target="https//www.google.com"> 
+                    <h:graphicImage id="facebookIconID" value="/images/facebook.png" class="imageSize" style="width:30%; height:30%;"/>
+                </h:link> 
+            </h:panelGrid>
+        </div> 
+        <div  class="contact-item"> 
+            <h:panelGrid id="telegramPanelID" title="Telegram infos" columns="1" class="panelContact">
+                <h:outputLink value="http://www.msn.com"> 
+                    <h:graphicImage id="telegramIconID" value="/images/telegram.png" class="imageSize" style="width:30%; height:30%;"/>
+                </h:outputLink> 
+            </h:panelGrid>
+        </div>
+        <div class="contact-item"> 
+            <h:panelGrid id="emailPanelID" title="Email infos" columns="1"  cellspacing="20" class="panelContact" >
+                <h:panelGroup style="width:100%; height:100%;">
+                    <h:graphicImage id="emailIconID" value="/images/email.png" class="imageSize" style="width:30%; height:30%"/>
+                    <h:outputText id="emailContactID" value="transport@iugb.edu.ci" style="width:100%;"/>
+                </h:panelGroup>
+            </h:panelGrid>
+        </div> 
+    </div> 
+</ui:composition>

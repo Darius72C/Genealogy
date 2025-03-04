@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:c="jakarta.tags.core"
+      xmlns:p="http://primefaces.org/ui" style="float:left; width:100%; height:100%; overflow-y:visible;">
+    
+    <f:view>
+        <h:head>                         
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Authentification </title>
+
+            <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>   
+        </h:head>
+
+        <h:body class="main">
+            <h:form id="authenticationFormID" class="main">
+                 <p:growl id="growl" showDetail="true" sticky="true" />  
+                <h:panelGroup id="main" class="main">
+                    <h:panelGroup id="headerLogoID" class="header">
+                        <ui:include src="/template/headerMenu.xhtml"/>
+                    </h:panelGroup> 
+                    <h:panelGroup id="authenticationPanelID" class="authSection">
+                        <p class="contentAuthTitle">Authentification client </p> 
+                        <br/>
+                        <br/>
+                        <h:panelGrid id="authenticationGridID"  columns="2"   cellspacing="25" columnClasses="columnFormat1, columnFormat2" styleClass="panelAuth"> 
+                            <h:outputLabel value="Nom usager: " class="labelFormat"/>  
+                            <h:inputText id="userName" value="#{accountListener.accountModelView.userName}" class="input" />  
+                            <h:outputLabel value="Mot de passe:" class="labelFormat" />  
+                            <h:inputSecret id="password" value="#{accountListener.accountModelView.password}" class="input"/>  
+                        </h:panelGrid>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <h:panelGrid id="createAccountPanelID"  cellspacing="10" style="width:40%; background-color: lavender; margin:auto;  text-align: center">       
+                            <h:link id="createAccount" value="Pas de compte? Créer un compte SVP!" 
+                                    outcome="/account/ajouterCompteClient.xhtml" style="margin-top:1%;font-family:Georgia; font-weight: bold; font-style: italic; font-size: small"/>
+                        </h:panelGrid>
+                        <br/>
+                        <h:panelGrid id="buttonPanelID"  columns="2" cellspacing="10"  columnClasses="columnFormatPer2, columnFormatPer2" class="panelButtonAuth">
+                            <p:commandButton id="authenticateButton" value="Identifier"  
+                                             actionListener="#{accountListener.login}"  oncomplete="PF('loginVar').show();" class="buttonClass"  style="font-size:xx-large"/>
+                            <p:commandButton id="clearButton" value="Effacer" 
+                                             actionListener="#{accountListener.clearLoginAccount(evt)}" class="buttonClass"  style="font-size:xx-large"/>
+                        </h:panelGrid>
+                        <p:dialog id="dlgLoginID" header="Login: #{accountListener.message.summary}" widgetVar="loginVar" showEffect="fade" closable="true" style='font-family: Georgia; font-size: medium; font-style: italic;'>
+                            <h:form id="dlgLoginFormID">
+                                <h:outputText id="messageID" value="#{accountListener.message.detail}"/>
+                                <br/>
+                                <br/>
+                                <h:link style="color: blue; font-weight: bold;" value="Accueil" outcome="/bienvenue.xhtml" rendered="#{accountListener.accountModelView.maxNbrOfTries !=0   and  accountListener.accountModelView.authenticated}"/> 
+                                <h:link style="color: blue; font-weight: bold;" value="Réessayer" outcome="/account/authentification.xhtml"  rendered="#{accountListener.accountModelView.maxNbrOfTries !=0 and !accountListener.accountModelView.authenticated and accountListener.accountModelView.account.status!='Blocked'}"/>
+                                <h:link style="color: blue; font-weight: bold;" value="Fournir un email valide, puis modifier votre mot de passe" outcome="/account/debloquerMotDePasse.xhtml"  rendered="#{accountListener.accountModelView.maxNbrOfTries ==0 or accountListener.accountModelView.account.status=='Blocked'}"/>
+                            </h:form>
+                        </p:dialog>
+                    </h:panelGroup>  
+                </h:panelGroup>
+            </h:form>
+        </h:body>
+    </f:view>
+</html>
+

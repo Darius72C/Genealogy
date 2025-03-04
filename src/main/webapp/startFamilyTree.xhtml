@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:c="jakarta.tags.core"
+      xmlns:p="http://primefaces.org/ui" style="float:left; width:100%; height:135%; overflow:auto;">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p>
+            La présente application est un arbre généalogique issu des traditions Africaines et implémenté par la société LITEN. Cet arbre généalogique tire ses racines sur les dogmes du savoir 
+            de la lignée des familles Africaines et sur le concept de marriage dans plusieurs pays Africains. Dans ce logiciel, la notions suivantes sont utilisées: 
+            1. Généalogie d'une famille: Considérant une personne désirant créé son arbre généaloque familial, le nom de l'arbre généalogique de sa famille est associé au nom de son grand-père paternel.
+            2. La personne ayant créée son arbre généalogique famille est identifiée dans le système comme la racine de l'arbre et est associée à un groupe ethnique.
+            3. Toute persone identifiée dans l'arbre généalogique peut avoir plusieurs partenaires du genre opposé et des enfants.
+            4. L'arbre généalogiqe permet aussi d'enregistrer et de visualiser la lignée d'un partenaire spécifique.
+
+        </p>
+        <h:outputText value="Pays d'origine du père: " class="labelFormat" /> 
+        <h:selectOneMenu  id="selectedCountryID" value="#{addressListener.addressModelView.countryID}" class="input" >
+            <f:selectItem itemLabel="Sélectionner le pays d'origine de votre père"/>
+            <f:selectItems  id="selectCountryValues"  value="#{addressListener.addressModelView.countryList}" var="curCountry"
+                            itemValue="#{curCountry.countryID}" itemLabel="#{curCountry.name}" />
+            <f:ajax listener="#{addressListener.selectCountry(event)}"/>
+        </h:selectOneMenu> 
+        <h:outputText value="Groupe Ethnique: " class="labelFormat" /> 
+        <h:selectOneMenu  id="selectedEthnicGroupID" value="#{ethnicListener.ethnicModelView.ethnicGroupID}" class="input" >
+            <f:selectItem itemLabel="Sélectionner votre grand groupe ethnique"/>
+            <f:selectItems  id="selectContactTypeValues"  value="#{ethnicListener.ethnicModelView.ethnicGroupList}" var="curEthnicGroup"
+                            itemValue="#{curEthicGroup.ethnicGroupID}" itemLabel="#{curEthnicGroup.name}" />
+            <f:ajax listener="#{ethnicListener.selectEthnicGroup(event)}"/>
+        </h:selectOneMenu> 
+        <p>Recherche du grand-père paternel</p>     
+        <h:panelGrid columns="3" cellspacing="10" columnClasses="columnFormatPer3, columnFormatPer3, columnFormatPer3">
+            <h:panelGrid columns="2" cellspacing="10" columnClasses="columnFormatPer2, columnFormatPer2">  
+                <h:outputText value="Prénom du Grand-Père Paternel"/>
+                <h:inputText id="fatherGrandFatherFNID" value="#{familyTreeListener.familyTreeModelView.fatherGrandFather.firstName}"/>
+                <h:outputText value="Nom du Grand-Père Paternel"/>
+                <h:inputText id="fatherGrandFatherLNID" value="#{familyTreeListener.familyTreeModelView.fatherGrandFather.lastName}"/>
+                <h:outputText value="Date ou année de naissance"/>
+                <h:inputText id="fatherGrandFatherDoBID" value="#{familyTreeListener.familyTreeModelView.dateOfBirth}"/>
+                <h:outputText value="Nom complet de l'arrière Grand-Père Paternel"/>
+                <h:inputText id="fatherGrandFatherFatherFullNameID" value="#{familyTreeListener.familyTreeModelView.fatherGrandFatherFatherFullName}"/>
+                <h:outputText value="Nom complet de la mère du Grand-Père Paternel"/>
+                <h:inputText id="fatherGrandFatherMotherFullNameID" value="#{familyTreeListener.familyTreeModelView.fatherGrandFatherMotherFullName}"/>
+            </h:panelGrid>
+            <h:commandButton value="Recherher" actionListener="#{personListener.searchPaternalGrandFather(evt)}"/>
+            <h:panelGroup>
+                <h:outputText value="Votre grand-père paternel: " class="labelFormat" /> 
+                <h:selectOneMenu  id="selectedPaternalGrandFatherID" value="#{personalListener.personalModelView.paternalGrandFatherID}" class="input" >
+                    <f:selectItem itemLabel="Sélectionner votre grand-père paternel"/>
+                    <f:selectItems  id="selectPaternalGrandFatherValues"  value="#{ethnicListener.ethnicModelView.ethnicGroupList}" var="curPaternalGrandFather"
+                                    itemValue="#{curPaternalGrandFather.personalID}" itemLabel="#{curPaternalGrandFather.lastName} #{curPaternalGrandFather.firstName}" />
+                    <f:ajax listener="#{personalListener.selectPaternalGrandFather(event)}"/>
+                </h:selectOneMenu>
+            </h:panelGroup>
+        </h:panelGrid>
+    </h:body>
+</html>

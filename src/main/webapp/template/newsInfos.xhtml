@@ -1,0 +1,46 @@
+<ui:composition  xmlns="https://www.w3.org/1999/xhtml"
+                 xmlns:ui="jakarta.faces.facelets"
+                 xmlns:f="jakarta.faces.core"
+                 xmlns:h="jakarta.faces.html"
+                 xmlns:c="jakarta.tags.core"
+                 xmlns:p="http://primefaces.org/ui">
+
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>  
+
+    <h:panelGroup id="newsInfosID" style="width:100%; height:100%;">
+        <p class="contentTitle">Annonces</p>
+        <c:set var="firstIndex" value="#{ratingsListener.ratingsModelView.index}"/>
+        <c:set var="firstNews" value="#{ratingsListener.ratingsModelView.getNextNews(firstIndex)}"/>
+        <c:set var="secondNews" value="#{ratingsListener.ratingsModelView.getNextNews(firstIndex+1)}"/>
+        <c:set var="thirdNews" value="#{ratingsListener.ratingsModelView.getNextNews(firstIndex+2)}"/>
+        <h:panelGroup  id="firstNewsID" class="newsDiv">  <b>Titre:</b> #{firstNews.title}
+            <br/>
+            <b>Type:</b> #{firstNews.newsType}
+            <br/>
+            <b>Description:</b> #{firstNews.description}
+            <br/>
+            <b>Source Info:</b> #{firstNews.contact.lastName} #{firstNews.contact.firstName}
+        </h:panelGroup >
+        <h:panelGroup  id="secondNewsID" class="newsDiv">  <b>Titre:</b> #{secondNews.title}
+            <br/>
+            <b>Type:</b> #{secondNews.newsType}
+            <br/>
+            <b>Description:</b> #{secondNews.description}
+            <br/>
+            <b>Source Info:</b> #{secondNews.contact.lastName} #{secondNews.contact.firstName}
+        </h:panelGroup >
+        <h:panelGroup  id="thirdNewsID" class="newsDiv">  <b>Titre:</b> #{thirdNews.title}
+            <br/>
+            <b>Type:</b> #{thirdNews.newsType}
+            <br/>
+            <b>Description:</b> #{thirdNews.description}
+            <br/>
+            <b>Source Info:</b> #{thirdNews.contact.lastName} #{thirdNews.contact.firstName}
+        </h:panelGroup >
+        <p:poll interval="60" listener="#{ratingsListener.ratingsModelView.updateIndex(firstIndex)}" process="@this" update="newsInfosID"/>
+
+    </h:panelGroup>
+
+</ui:composition>
+

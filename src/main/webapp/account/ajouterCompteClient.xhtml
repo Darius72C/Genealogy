@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:c="jakarta.tags.core"
+      xmlns:p="http://primefaces.org/ui" style="float:left; width:100%; height:135%; overflow:auto;">
+
+    <f:view> 
+        <h:head>                         
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>   Créer un compte</title>
+            <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>  
+        </h:head>
+        <h:body class="main">
+            <h:form id="addContactAcctFormID" class="main"  enctype="multipart/form-data" >
+                <h:panelGroup id="main" class="main">
+                    <!---h:panelGroup id="headerLogoID" class="header">
+                        <ui:include src="/template/headerMenu.xhtml"/>
+                    </h:panelGroup-->
+                    <h:panelGroup id="contentID" class="contentSection">
+                        <p:growl id="growl" showDetail="true" sticky="true" />  
+                        <p class="contentTitle">Informations du contact </p>
+                        <h:panelGrid id="contactPanelID" title="Contact infos" columns="2" columnClasses="columnFormat1, columnFormat2" cellspacing="5" class="panelClientInfos">
+                            <h:outputLabel value="Prénoms (*): " class="labelFormat"/>
+                            <h:panelGroup style="width:100%;">
+                                <h:inputText id="firstNameID" value="#{contactListener.contactModelView.contact.firstName}" required="true" requiredMessage="Entrez le prénom SVP!" style="width:80%;"/>
+                                <h:message for="firstNameID" style="color: red;" />
+                            </h:panelGroup>
+                            <h:outputLabel value="Nom (*): " class="labelFormat"/>
+                            <h:panelGroup>
+                                <h:inputText id="lastNameID" value="#{contactListener.contactModelView.contact.lastName}" required="true" requiredMessage="Entrez le nom SVP!" style="width:80%;"/>
+                                <h:message for="lastNameID" style="color: red;" />
+                            </h:panelGroup>
+                            <h:outputLabel value="Sobriquet (*): " class="labelFormat"/>
+                            <h:panelGroup>
+                                <h:inputText id="nickNameID" value="#{contactListener.contactModelView.contact.nickName}" required="true" requiredMessage="Entrez le nom SVP!" style="width:80%;"/>
+                                <h:message for="nickNameID" style="color: red;" />
+                            </h:panelGroup>
+                            <h:outputText value="Type de contact: " class="labelFormat" /> 
+                            <h:panelGroup  id="selectContactTypeID" >
+                                <h:selectOneMenu  id="selectedContactTypeID" value="#{contactListener.contactModelView.contactTypeID}" class="input" >
+                                    <f:selectItem itemLabel="Sélectionner un type de contact"/>
+                                    <f:selectItems  id="selectContactTypeValues"  value="#{contactListener.contactModelView.contactTypeList}" var="curContactType"
+                                                    itemValue="#{curContactType.contactTypeID}" itemLabel="#{curContactType.name}" />
+                                    <f:ajax listener="#{contactListener.selectContactType(event)}"/>
+                                </h:selectOneMenu> 
+                            </h:panelGroup>
+                            <h:outputLabel value="Téléphone: " class="labelFormat"/>
+                            <h:inputText  id="mainPhoneID" value="#{contactListener.contactModelView.contact.mainPhone}" style="width:80%;"/>
+                            <h:outputLabel value="Courriel(*): " class="labelFormat"/>
+                            <h:panelGroup>
+                                <h:inputText id="emailID" value="#{contactListener.contactModelView.contact.email}" required="true" requiredMessage="Entrez le nom SVP!" style="width:80%;"/>
+                                <h:message for="emailID" style="color: red;" />      
+                            </h:panelGroup>
+                            <h:outputLabel value="Image:" for="contactImageGroupPanelID"  class="labelFormat"/>
+                            <h:panelGroup id="contactImageGroupPanelID" style="*width:40%; height:15px;">
+                                <h:panelGroup id="contactImageGroupID" style="width:100%; height:89%;">
+                                    <p:graphicImage id="contactImageID" value="#{imageDBToWeb.getWebImage(contactListener.contactModelView.contact.picture)}" style="width:80%; height:89%;" rendered="#{contactListener.contactModelView.renderImage}"/>                   
+                                </h:panelGroup>
+                                <h:panelGroup id="imageFilePanelID" style="width:100%; height:9%;">
+                                    <h:inputFile id="imageFileID" label="upload image" value="#{contactListener.uploadContactImage(evt)}" style="width:80%;height:100%;font: normal Georgia; color: black; text-align: center;"/>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                        </h:panelGrid>
+                        <h:panelGrid id="credentialsPanelID" title="Credentials" columns="2" columnClasses="columnFormat1, columnFormat2"  class="panelClientInfos">
+                            <h:outputText value="Type de compte: " class="labelFormat" /> 
+                            <h:panelGroup  id="selectAccountTypeID" >
+                                <h:selectOneMenu  id="selectedAccountTypeID" value="#{accountListener.accountModelView.accountType}" class="input" >
+                                    <f:selectItem itemLabel="Sélectionner un type de compte"/>
+                                    <f:selectItem itemLabel="Admin" itemValue="Admin"/>
+                                     <f:selectItem itemLabel="Gestionnaire" itemValue="Gestionnaire"/>
+                                     <f:selectItem itemLabel="Client" itemValue="Client"/>
+                                    <f:ajax listener="#{accountListener.selectAccountType(event)}"/>
+                                </h:selectOneMenu> 
+                            </h:panelGroup>
+                            <h:outputLabel for="userNameID"  value="Nom usager(*): " class="labelFormat"/>
+                            <h:panelGroup>
+                                <h:panelGrid  columns="1" style="width:100%;">
+                                    <h:inputText id="userNameID" value="#{contactListener.accountModelView.account.userName}" required="true" requiredMessage="Entrez votre nom d'usager SVP" style="width:80%;">
+                                        <f:validateLength minimum="8" maximum="25" /> 
+                                    </h:inputText> 
+                                    <h:outputLabel value="Minimum 8 caractères " style="font-size: small;"/>                              
+                                </h:panelGrid >
+                                <h:message for="userNameID" style="color: red;" />
+                            </h:panelGroup>
+                            <h:outputLabel  for="passwordID" value="Mot de passe(*): " class="labelFormat"/>
+                            <h:panelGroup>
+                                <h:panelGrid  columns="1" style="width:100%;">
+                                    <h:inputSecret id="passwordID" value="#{contactListener.accountModelView.account.password}" required="true"  requiredMessage="Entrez votre mot de passe SVP!" style="width:80%;">
+                                        <f:validateLength minimum="8" maximum="25" /> 
+                                    </h:inputSecret> 
+                                    <h:outputLabel value="Minimum 8 caractères" style="font-size: small;"/>
+                                </h:panelGrid >
+                                <h:message for="passwordID" style="color: red;" />
+                            </h:panelGroup>
+                        </h:panelGrid>  
+                        <h:panelGrid id="buttonPanelID"  columns="2" columnClasses="columnFormatPer2, columnFormatPer2"  styleClass="panelButton">
+                            <p:commandButton id="addAcctButton" value="Ajouter un compte" update="addContactAcctFormID" oncomplete="PF('contactVar').show();"
+                                             actionListener="#{accountListener.addAccountContact(evt)}" class="buttonClass"/>
+                            <p:commandButton id="clearAcctButton" value="Effacer" 
+                                             actionListener="#{accountListener.clearAccount(evt)}" update="addContactAcctFormID"  class="buttonClass"/>
+                        </h:panelGrid>
+                        <p:dialog id="dlgContactID" header="Compte et contact" widgetVar="contactVar" showEffect="fade" closable="true" dynamic="true">
+                            <h:form id="dlgContactFormID">
+                                <h:outputText id="messageID" value="#{accountListener.message.detail}"/>
+                                <h:outputText/>
+                                <h:link value="Home" outcome="/bienvenue.xhtml" rendered="#{contactListener.contactModelView.isCreated}"/> 
+                                <h:link value="Retry" outcome="/account/ajouterCompteClient.xhtml"  rendered="#{!contactListener.contactModelView.isCreated}"/>
+                            </h:form>
+                        </p:dialog>
+                    </h:panelGroup>
+                    <div id="contactID" class="contact">
+                        <ui:include src="/template/contact.xhtml"/>
+                    </div> 
+                    <div id="footerID" class="footer">
+                        <ui:include src="/template/footer.xhtml"/>
+                    </div>
+                </h:panelGroup>
+            </h:form>
+        </h:body>
+    </f:view>
+</html>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:c="jakarta.tags.core"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="#{request.contextPath}/css/formulaire.css"/>
+        
+        <script>
+            function toggleSpouseName(checkbox) {
+                var wifeNameGroup = document.getElementById("spouse_section");
+
+                if (checkbox.checked) {
+                    wifeNameGroup.style.display = "block";
+                } else {
+                    wifeNameGroup.style.display = "none";
+                }
+            }
+
+            function toggleChildren(checkbox) {
+                var childrenSection = document.getElementById("children_section");
+
+                if (checkbox.checked) {
+                    childrenSection.style.display = "block";
+                } else {
+                    childrenSection.style.display = "none";
+
+                }
+            }
+
+            function addAnotherSpouse() {
+                var spouseFieldsContainer = document.getElementById('spouseFieldsContainer');
+
+                // Créer une nouvelle section pour chaque époux
+                var spouseSection = document.createElement('div');
+                spouseSection.className = 'spouseSection';
+
+                // Créer une div séparée pour le label
+                var labelDiv = document.createElement('div');
+                labelDiv.className = 'labelDiv';
+
+                var label = document.createElement('label');
+                label.innerHTML = "Another Spouse";
+                labelDiv.appendChild(label); // Ajouter le label dans la div séparée
+
+                // Ajouter la div du label à la section de l'époux
+                spouseSection.appendChild(labelDiv);
+
+                // Créer une div pour le champ d'entrée et le bouton de suppression
+                var spouseField = document.createElement('div');
+                spouseField.className = 'form-group spouseField';
+
+                var input = document.createElement('input');
+                input.type = 'text';
+                input.name = 'spouseName';
+                input.className = 'spouseNameInput';
+
+                var removeButton = document.createElement('button');
+                removeButton.type = "button";
+                removeButton.innerHTML = 'X';
+                removeButton.className = 'removebtnSpouseField';
+                removeButton.onclick = function () {
+                    spouseFieldsContainer.removeChild(spouseSection);
+                };
+
+                spouseField.appendChild(input);
+                spouseField.appendChild(removeButton);
+
+                // Ajouter la div du champ d'entrée et du bouton à la section de l'époux
+                spouseSection.appendChild(spouseField);
+
+                // Créer une section pour les enfants de cet époux
+                var childSection = document.createElement('div');
+                childSection.className = 'childrenSection';
+
+                var childLabel = document.createElement('p');
+                childLabel.innerHTML = "Spouse's Child:";
+
+                var addChildButton = document.createElement('button');
+                addChildButton.type = "button";
+                addChildButton.innerHTML = 'Add Child';
+                addChildButton.className = 'addChild';
+                addChildButton.onclick = function () {
+                    var newChildField = document.createElement('div');
+                    newChildField.className = 'form-group childField';
+
+                    var childInput = document.createElement('input');
+                    childInput.type = 'text';
+                    childInput.name = 'childName';
+                    childInput.className = 'childNameInput';
+
+                    var removeChildButton = document.createElement('button');
+                    removeChildButton.type = "button";
+                    removeChildButton.innerHTML = 'X';
+                    removeChildButton.className = 'removebtnChildField';
+                    removeChildButton.onclick = function () {
+                        childSection.removeChild(newChildField);
+                    };
+
+                    newChildField.appendChild(childInput);
+                    childSection.appendChild(newChildField);
+                    newChildField.appendChild(removeChildButton);
+                };
+
+                childSection.appendChild(childLabel);
+                childSection.appendChild(addChildButton);
+
+                spouseSection.appendChild(childSection);
+                spouseFieldsContainer.appendChild(spouseSection);
+            }
+
+        </script>
+    </head>
+    <body>
+        <h:form class="container">
+    <h2 style="margin-bottom: 50px">Give us more information about you</h2>
+    <div class="form-section">
+        <div class="box-group">
+            <div class="form-group">
+                <p:outputLabel value="Last Name" for="lastName"/>
+                <p:inputText id="lastName" value="#{personFormBean.lastName}"/>
+            </div>
+            <div class="form-group">
+                <p:outputLabel value="First Names" for="firstNames"/>
+                <p:inputText id="firstNames" value="#{personFormBean.firstName}"/>
+            </div>
+            <div class="form-group">
+                <p:outputLabel value="Genre" for="gender"/>
+                <h:selectOneRadio id="gender" value="#{personFormBean.gender}">
+                    <f:selectItem itemLabel="Masculin" itemValue="Masculin"/>
+                    <f:selectItem itemLabel="Feminin" itemValue="Feminin"/>
+                </h:selectOneRadio>
+            </div>
+            <div class="form-group">
+                <p:outputLabel value="Date of Birth" for="dob"/>
+                <p:datePicker id="dob" value="#{personFormBean.dateOfBirth}" pattern="MM/dd/yyyy"/>
+            </div>
+            <div class="form-group">
+                <p:outputLabel value="Place of Birth" for="placeOfBirth"/>
+                <p:inputText id="placeOfBirth" value="#{personFormBean.placeOfBirth}"/>
+            </div>
+            <div class="form-group">
+                <p:outputLabel value="Nationality" for="nationality"/>
+                <p:inputText id="nationality" value="#{personFormBean.nationality}"/>
+            </div>
+        </div>
+
+        <div class="box-group">
+            <div class="form-group">
+                <p:outputLabel value="Address" for="address"/>
+                <p:inputText id="address" value="#{personFormBean.address}"/>
+            </div>
+            <div class="form-group">
+                <p:outputLabel value="Father full name" for="fatherFullName"/>
+                <p:inputText id="fatherFullName" value="#{personFormBean.fatherFullName}"/>
+            </div>
+            <div class="form-group">
+                <p:outputLabel value="Father's Birthday" for="fatherDob"/>
+                <p:datePicker id="fatherDob" value="#{personFormBean.fatherDob}" pattern="MM/dd/yyyy"/>
+            </div>
+            <div class="form-group">
+                <p:outputLabel value="Mother's full name" for="motherFullName"/>
+                <p:inputText id="motherFullName" value="#{personFormBean.motherFullName}"/>
+            </div>
+            <div class="form-group">
+                <p:outputLabel value="Mother's Birthday" for="motherDob"/>
+                <p:datePicker id="motherDob" value="#{personFormBean.motherDob}" pattern="MM/dd/yyyy"/>
+            </div>
+        </div>
+
+        <div class="box-group">
+           
+            <div id="spouse_section">
+                <div class="form-group" id="spouseFieldsContainer">
+                    <p:outputLabel value="Spouse's Name" for="spouseName"/>
+                    <p:inputText id="spouseName" value="#{personFormBean.spouseNames[0]}" style="margin-bottom: 20px"/>
+                </div>
+                <button type="button" class="addSpouse" onclick="addAnotherSpouse()">Add Spouse</button>
+            </div>
+        </div>
+    </div>
+    <p:commandButton value="Submit" action="#{personFormBean.submit}" class="submit_btn"/>
+</h:form>
+    </body>
+</html>

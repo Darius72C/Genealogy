@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:c="jakarta.tags.core"
+      xmlns:p="http://primefaces.org/ui" style="float:left; width:100%; height:135%; overflow:auto;">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Modifier un contact</title>
+
+            <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/> 
+        </h:head>
+        <h:body class="main">
+
+            <h:form id="modifyContactFormID" class="main" enctype="multipart/form-data">
+                <p:growl id="growl" showDetail="true" sticky="true" />
+                <h:panelGroup id="main" class="main">
+                    <h:panelGroup id="headerLogoID" class="header">
+                        <ui:include src="/template/headerMenu.xhtml"/>
+                    </h:panelGroup >
+                    <h:panelGroup id="contentID" class="contentSection"> 
+                        <p style="font: bolder italic xx-large Georgia; color: orangered; text-align: center;">Modifier un contact</p>    
+
+                        <!-- Contact Information Panel -->
+                        <h:panelGrid id="contactPanelID" title="Contact infos" columns="2" cellspacing="5" columnClasses="columnFormat1, columnFormat2" styleClass="panelClientInfos" rendered="#{contactListener.contactModelView.contact.contactID !=null}">
+                            <h:outputLabel value="Prénom: " class="labelFormat"/>
+                            <h:inputText id="firstName" value="#{contactListener.contactModelView.contact.firstName}" class="input"/>
+                            <h:outputLabel value="Nom: " class="labelFormat"/>
+                            <h:inputText id="lastName" value="#{contactListener.contactModelView.contact.lastName}" class="input"/>
+                            <h:outputLabel value="Genre: " class="labelFormat"/>
+                            <h:inputText id="genre" value="#{contactListener.contactModelView.contact.genre}"  class="input"/>
+                            <h:outputLabel value="Email: " class="labelFormat"/>
+                            <h:inputText id="email" value="#{contactListener.contactModelView.contact.email}" class="input"/>
+                            <h:outputLabel value="Surnom: " class="labelFormat"/>
+                            <h:inputText id="nickName" value="#{contactListener.contactModelView.contact.nickName}"  class="input"/>
+                            <h:outputLabel value="Téléphone principal: " class="labelFormat"/>
+                            <h:inputText id="mainPhone" value="#{contactListener.contactModelView.contact.mainPhone}" class="input"/>
+                            <h:outputText value="Type de contact: " class="labelFormat" /> 
+                            <h:selectOneMenu  id="selectedContactTypeID" value="#{contactListener.contactModelView.contactTypeID}" class="input" >
+                                <f:selectItem itemLabel="Sélectionner un type de contact..." />
+                                <f:selectItems  id="selectContactTypeValues"  value="#{contactListener.contactModelView.contactTypeList}" var="curContactType"
+                                                itemValue="#{curContactType.contactTypeID}" itemLabel="#{curContactType.name}" />
+                                <f:ajax listener="#{contactListener.selectContactType(event)}"/>
+                            </h:selectOneMenu> 
+                            <h:outputLabel value="Image:" for="contactImageGroupPanelID"  class="labelFormat"/>
+                            <h:panelGroup id="contactImageGroupPanelID" style="*width:40%; height:15px;">
+                                <h:panelGroup id="contactImageGroupID" style="width:100%; height:89%;">
+                                    <p:graphicImage id="contactImageID" value="#{imageDBToWeb.getWebImage(contactListener.contactModelView.contact.picture)}" style="width:80%; height:89%;" rendered="#{contactListener.contactModelView.renderImage}"/>                   
+                                </h:panelGroup>
+                                <h:panelGroup id="imageFilePanelID" style="width:100%; height:9%;">
+                                    <h:inputFile id="imageFileID" label="upload image" value="#{contactListener.uploadContactImage(evt)}" style="width:80%;height:100%;font: normal Georgia; color: black; text-align: center;"/>
+                                </h:panelGroup>
+                            </h:panelGroup>
+                        </h:panelGrid>
+
+                        <br/><br/>
+
+                        <!-- Action Buttons -->
+                        <h:panelGrid id="buttonPanelID" title="Listener buttons" columns="2" columnClasses="columnFormatPer2, columnFormatPer2"  styleClass="panelButton">
+                            <p:commandButton id="modifyContact" value="Modifier contact" actionListener="#{contactListener.updateContact(evt)}" update="modifyContactFormID" styleClass="buttonClass"/>
+                            <p:commandButton id="clearContactButton" value="Effacer" actionListener="#{contactListener.clearContact}" styleClass="buttonClass"/>
+                        </h:panelGrid>
+                    </h:panelGroup >
+
+                    <h:panelGroup id="contactID" class="contact">
+                        <ui:include src="/template/contact.xhtml"/>
+                    </h:panelGroup> 
+
+                    <div id="footerID" class="footer">
+                        <ui:include src="/template/footer.xhtml"/>
+                    </div>
+                </h:panelGroup >
+            </h:form>
+        </h:body>
+    </f:view>
+</html>

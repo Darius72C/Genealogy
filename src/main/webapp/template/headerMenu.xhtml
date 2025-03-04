@@ -1,0 +1,49 @@
+<ui:composition  xmlns="https://www.w3.org/1999/xhtml"
+                 xmlns:ui="jakarta.faces.facelets"
+                 xmlns:f="jakarta.faces.core"
+                 xmlns:h="jakarta.faces.html"
+                 xmlns:c="jakarta.tags.core"
+                 xmlns:p="http://primefaces.org/ui">
+
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>
+
+    <div id="headerGridID"  class="header-grid"> 
+        <div id="logoGroupID"  class="header-item1">  
+            <h:link  id="welcomeID" title="Accueil" outcome="/bienvenue.xhtml">
+                <h:graphicImage id="logoID" title="Bienvenue à l'église du Salut" value="/images/egliseLogo.jpeg" alt="Logo eglise"  class="imageSize"/>
+            </h:link>
+        </div> 
+        <div id="emptyBox1ID" class="header-item"/> 
+        <div id="aboutGroupID"  class="header-item" >  
+            <h:link title="Identité et historique" value = "Identité" outcome="/apropos.xhtml" style="font-weight:normal;text-decoration:none;" /> 
+        </div> 
+        <div id="specialEventGroupID" class="header-item" >  
+            <h:link title="Evènements spéciaux" value="Evènements" outcome="/evenements.xhtml"  style="font-weight:normal;text-decoration:none;"/> 
+        </div>  
+        <div id="donationsID" class="header-item" >  
+            <h:link title="Faire un don" value="Dons" outcome="/dons.xhtml"  style="font-weight:normal;text-decoration:none;"/> 
+        </div> 
+        <div id="communityID"  class="header-item" >  
+            <h:link title="communautés" value = "Communautés" outcome="/reseautagesCommunautes.xhtml" style="font-weight:normal;text-decoration:none;" /> 
+        </div>
+        <div id="emptyBox2ID" class="header-item"/>  
+        <div id="emptyBox2ID" class="header-item"/> 
+        <div id="accountMenuID" class="header-item"  style="font-weight:normal;text-decoration:none;">
+             <h:link title="Mon dimanche" value = "Dimanche" outcome="/monDimanche.xhtml" style="font-weight:normal;text-decoration:none;" /> 
+        </div>
+        <div id="accountGroupID" class="header-item"> 
+            <ul style="width:100%; height:auto; vertical-align:top;">
+                <li style="width:100%; height:auto;"> Compte                   
+                    <ul style="width:100%; height:100%;margin-left:3%;">
+                        <h:panelGrid id="accountClientGridID" columns="1" style="width:100%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                            <li style="width:100%; height:100%;"> <h:link id="authenticationID" title="Authentication" value = "Authentification" outcome="/account/authentification.xhtml"  rendered="#{!accountListener.accountModelView.authenticated}" /> </li>
+                            <li style="width:100%; height:100%;"> <h:commandLink id="logoutClientID" title="Logout" value = "Logout" actionListener="#{accountListener.logout}"  rendered="#{accountListener.accountModelView.authenticated} and #{accountListener.accountModelView.account.accountType eq 'Client'}" /> </li>            
+                            <li style="width:100%; height:100%;"> <h:link id="addAccountID" title="Add account" value = "Ajouter un compte" outcome="/account/ajouterCompteClient.xhtml" rendered="#{!accountListener.accountModelView.authenticated}"  /> </li> 
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</ui:composition>

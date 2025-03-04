@@ -1,0 +1,180 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>  
+
+    <div  id="adminServicesGridID" class="flex-admin-services-grid ">
+        <div class="flex-admin-services-item" >
+            <ul style="width:100%;height:100%; vertical-align:top;">
+                <li  style="width:100%;height:100%; ">Addressing
+                    <ul style="width:97%; height:100%; margin-left:3%;"> 
+                        <h:panelGrid columns="2" style="width: 100%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top;background-color:#ffffb3;" styleClass="topAligned">
+                            <h:panelGrid columns="1"  style=" width: auto;height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top; ">
+                                <li  style="width:auto; color:blue;">Address
+                                    <ul  style="width:97%; margin-left:3%;">
+                                        <li> <h:link value="Add region" outcome="/address/region/addRegion.xhtml"/> </li>
+                                        <li> <h:link value="Update region" outcome="/address/region/updateRegion.xhtml"/> </li>
+                                        <li> <h:link value="Consult region" outcome="/address/region/consultRegion.xhtml"/> </li>
+                                        <li> <h:link value="Add city" outcome="/address/city/addCity.xhtml"/> </li>
+                                        <li> <h:link value="Update city" outcome="/address/city/updateCity.xhtml"/> </li>
+                                        <li> <h:link value="Consukt city" outcome="/address/city/consultCity.xhtml"/> </li>
+                                        <li> <h:link value="Add quarter" outcome="/address/quarter/addQuarter.xhtml"/> </li>
+                                        <li> <h:link value="Update quarter" outcome="/address/quarter/updateQuarter.xhtml"/> </li>
+                                        <li> <h:link value="Consult quarter" outcome="/address/quarter/consultQuarter.xhtml"/> </li>
+                                        <li> <h:link value="Add address" outcome="/address/addAddress.xhtml"/> </li>
+                                        <li> <h:link value="Update address" outcome="/address/updateAddress.xhtml"/> </li>
+                                        <li> <h:link value="Consult an address" outcome="/address/consultAddress.xhtml"/> </li>
+                                    </ul>
+                                </li>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" style="width:auto;margin-top:0.5%;padding-top:0.5%;vertical-align:top;;">
+                                <li  style="width:auto; color:blue;">Location
+                                    <ul  style="width:97%; margin-left:3%;">
+                                        <li> <h:link value="Add location" outcome="/address/addLocation.xhtml"/> </li>
+                                        <li> <h:link value="Update location" outcome="/address/updateLocation.xhtml"/> </li>
+                                        <li> <h:link value="consult location" outcome="/address/consultLocation.xhtml"/> </li>
+                                    </ul>
+                                </li>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="flex-admin-services-item">
+            <ul style="width:100%;vertical-align:top; height:100%; ">
+                <li  style="width:100%;height:100%; ">Schedules
+                    <ul  style="width:97%; height:100%; margin-left:3%; ">  
+                        <h:panelGrid columns="2" style="width:100%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top;background-color:#ffffb3;" styleClass="topAligned">
+                            <h:panelGrid columns="1" style="width:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                <li  style="width:100%; color:blue;">Bus stop
+                                    <ul  style="width:97%; margin-left:3%;">
+                                        <li> <h:link value="Add bus stop" outcome="/busStop/addBusStop.xhtml"/> </li>
+                                        <li> <h:link value="Update bus stop" outcome="/busStop/updateBusStop.xhtml"/> </li>
+                                        <li> <h:link value="Consult bus stop" outcome="/busStop/consultBusStop.xhtml"/> </li>
+                                        <li> <h:link value="Add bus stop arrival" outcome="/busStop/addArrival.xhtml"/> </li>
+                                        <li> <h:link value="Update bus stop arrival" outcome="/busStop/updateArrival.xhtml"/> </li>
+                                        <li> <h:link value="Consult bus stop arrival per date" outcome="/busStop/consultArrivalPerTrajectDate.xhtml"/> </li>
+                                    </ul>
+                                </li>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" style="width:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                <li  style="width:100%; color:blue;">Traject and schedule
+                                    <ul  style="width:97%; margin-left:3%;">
+                                        <li> <h:link value="Add traject" outcome="/traject/addTraject.xhtml"/> </li>
+                                        <li> <h:link value="Update traject" outcome="/traject/updateTraject.xhtml"/> </li>
+                                        <li> <h:link value="Consult traject" outcome="/traject/consultTraject.xhtml"/> </li>
+                                        <li> <h:link value="Add traject" outcome="/traject/addSchedule.xhtml"/> </li>
+                                        <li> <h:link value="Update traject" outcome="/traject/updateSchedule.xhtml"/> </li>
+                                        <li> <h:link value="Consult traject" outcome="/traject/consultSchedule.xhtml"/> </li>
+                                        <li> <h:link value="Add bus stop per traject" outcome="/traject/addBusStopTraject.xhtml"/> </li>
+                                        <li> <h:link value="Consult bus stop per traject" outcome="/traject/consultBusStopTraject.xhtml"/> </li>
+                                        <li> <h:link value="Add bus stop per schedule" outcome="/traject/addBusStopSchedule.xhtml"/> </li>
+                                        <li> <h:link value="Consult bus stop per schedule" outcome="/traject/consultBusStopSchedule.xhtml"/> </li>
+                                    </ul>
+                                </li>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="flex-admin-services-item">
+            <ul style="width:100%;vertical-align:top;">
+                <li  style="width:100%;"> U-Services
+                    <ul  style="width:97%; margin-left:3%;">  
+                        <h:panelGrid style="width:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;background-color: #ffffb3">
+                            <li> <h:link value="Add an enrollment" outcome="/enrollment/addEnrollment.xhtml"/> </li>
+                            <li> <h:link value="Update an enrollment" outcome="/enrollment/updateEnrollment.xhtml"/> </li>
+                            <li> <h:link value="Consult an enrollment" outcome="/enrollment/consultEnrollment.xhtml"/> </li>
+                            <li> <h:link value="Add parent" outcome="/parent/addParent.xhtml"/> </li>
+                            <li> <h:link value="Update parent" outcome="/parent/updateParent.xhtml"/> </li>
+                            <li> <h:link value="Consult parent" outcome="/parent/consultParentPerCredentials.xhtml"/> </li>
+                            <li> <h:link value="Deactivate client" outcome="/client/deactivateClientAccount.xhtml"/> </li>
+                            <li> <h:link value="Deactivate mobile money" outcome="/mobileMoney/deactivateMobileMoney.xhtml"/> </li>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="flex-admin-services-item">
+            <ul style="width:100%;vertical-align:top;">
+                <li  style="width:100%;">  Employees 
+                    <ul  style="width:97%; margin-left:3%;">  
+                        <h:panelGrid columns="2"  style="width:100%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top;background-color: #ffffb3" styleClass="topAligned">
+                            <h:panelGrid columns="1" style="width:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                <li  style="width:100%; color:blue;">Employee
+                                    <ul  style="width:97%; margin-left:3%;">
+                                        <li> <h:link value="Add employee" outcome="/employee/addEmployee.xhtml"/> </li>
+                                        <li> <h:link value="Update employee" outcome="/employee/updateAnyEmployee.xhtml"/> </li>
+                                        <li> <h:link value="Consult employee" outcome="/employee/consultAnyEmployee.xhtml"/> </li>
+                                    </ul>
+                                </li>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" style="width:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                <li  style="width:100%; color:blue;">Driver
+                                    <ul  style="width:97%; margin-left:3%;">
+                                        <li> <h:link value="Add driver" outcome="/driver/addDriver.xhtml"/> </li>
+                                        <li> <h:link value="Update driver" outcome="/driver/updateDriver.xhtml"/> </li>
+                                        <li> <h:link value="Consult driver" outcome="/driver/consultDriver.xhtml"/> </li>
+                                        <li> <h:link value="Add driver license" outcome="/driver/addDriverLicense.xhtml"/> </li>
+                                        <li> <h:link value="Update driver license" outcome="/driver/updateDriverLicense.xhtml"/> </li>
+                                        <li> <h:link value="Consult driver license" outcome="/driver/consultDriverLicense.xhtml"/> </li>
+                                        <li> <h:link value="Add driver license type" outcome="/driver/addDriverLicenseType.xhtml"/> </li>
+                                        <li> <h:link value="Update driver license type" outcome="/driver/updateDriverLicenseType.xhtml"/> </li>
+                                        <li> <h:link value="Consult driver license type" outcome="/driver/consultDriverLicenseType.xhtml"/> </li>
+                                    </ul>
+                                </li>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="flex-admin-services-item">
+            <ul style="width:100%;vertical-align:top;">
+                <li  style="width:100%;">Events/Transportation        
+                    <ul  style="width:97%; margin-left:3%; ">
+                        <h:panelGrid columns="3" style="width:100%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top;background-color: #ffffb3" styleClass="topAligned">
+                            <h:panelGrid columns="1" style="width:100%;vertical-align:top;">
+                                <li  style="width:100%; color:blue;">Special Event
+                                    <ul  style="width:97%; margin-left:3%;">
+                                        <li> <h:link value="Add special event" outcome="/specialEvent/addSpecialEvent.xhtml"/> </li>
+                                        <li> <h:link value="Update special event" outcome="/specialEvent/updateSpecialEvent.xhtml"/> </li>
+                                        <li> <h:link value="Consult special event" outcome="/specialEvent/consultSpecialEvent.xhtml"/> </li>
+                                    </ul>
+                                </li>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" style="width:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                <li  style="width:100%; color:blue;">Manufacturer and Vehicle
+                                    <ul  style="width:97%; margin-left:3%;">
+                                        <li> <h:link value="Add manufacturer" outcome="/manufacturer/addManufacturer.xhtml"/> </li>
+                                        <li> <h:link value="Update manufacturer" outcome="/manufacturer/updateManufacturer.xhtml"/> </li>
+                                        <li> <h:link value="Consult manufacturer" outcome="/manufacturer/consultManufacturer.xhtml"/> </li>
+                                        <li> <h:link value="Add vehicle" outcome="/vehicle/addVehicle.xhtml"/> </li>
+                                        <li> <h:link value="Update vehicle" outcome="/vehicle/updateVehicle.xhtml"/> </li>
+                                        <li> <h:link value="Consult vehicle" outcome="/vehicle/consultVehicle.xhtml"/> </li>
+                                    </ul>
+                                </li>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" style="width:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                <li  style="width:100%; color:blue;">Transportation
+                                    <ul  style="width:97%; margin-left:3%;">
+                                        <li> <h:link value="Add a transportation" outcome="/transport/addTransport.xhtml"/> </li>
+                                        <li> <h:link value="Consult a transportation" outcome="/transport/consultTransport.xhtml"/> </li>
+                                        <li> <h:link value="Active delayed transport" outcome="/transport/activeDelayedTransports.xhtml"/> </li>
+                                        <li> <h:link value="All delayed transports per date" outcome="/transport/delayedTransportsPerDate.xhtml"/> </li>
+                                    </ul>
+                                </li>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div> 
+</ui:composition>

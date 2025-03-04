@@ -1,0 +1,272 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/> 
+    <h:panelGroup id="secondMenuID" style="width:100%;"> 
+        <ul style="width:100%;vertical-align:top; height: auto; ">
+            <li  style="width:25%;height:auto; ">Utilisateurs
+                <ul  style="width:97%; height:auto; margin-left:3%; "> 
+                    <li  style="width:100%; color:blue;">Contact
+                        <ul  style="float:left; width:97%; margin-left:3%;">
+                            <h:panelGrid columns="1">
+                                <li> <h:link value="Ajouter un contact" outcome="/user/ajouterContact.xhtml"/> </li>
+                                <li> <h:link value="Consulter un contact" outcome="/user/consulterContact.xhtml"/> </li>
+                                <li> <h:link value="Modifier un contact" outcome="/user/modifierContact.xhtml"/> </li>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                    <li  style="width:100%; color:blue;">Membre
+                        <ul  style="float:left; width:97%; margin-left:3%;">
+                            <h:panelGrid columns="1">
+                                <li> <h:link value="Consulter un menbre" outcome="/member/consulterMembreParCode.xhtml"/> </li>
+                                <li> <h:link value="Consulter les membres par mois" outcome="/member/consulterMembreMoisAnnee.xhtml"/> </li>
+                                <li> <h:link value="Mettre à jour un membre" outcome="/member/modifierMembre.xhtml"/> </li>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                    <li  style="width:100%; color:blue;">Clergé
+                        <ul  style="width:97%; margin-left:3%;">
+                            <h:panelGrid columns="1">
+                                <li> <h:link value="Ajouter un clerc" outcome="/clergy/ajouterClerc.xhtml"/> </li>
+                                <li> <h:link value="Consulter un clerc" outcome="/clergy/consulterClerc.xhtml"/> </li>
+                                <li> <h:link value="Modifier un clerc" outcome="/clergy/modifierClerc.xhtml"/> </li>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                    <li  style="width:100%; color:blue;">Partenaire
+                        <ul  style="width:97%; margin-left:3%;">
+                            <h:panelGrid columns="1">
+                                <li> <h:link value="Ajouter un partenaire" outcome="/partner/ajouterPartenaire.xhtml"/> </li>
+                                <li> <h:link value="Consulter un partenaire" outcome="/partner/consulterPartenaire.xhtml"/> </li>
+                                <li> <h:link value="Modifier un partenaire" outcome="/partner/modifierPartenaire.xhtml"/> </li>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                    <li  style="width:100%; color:blue;">Sponsor
+                        <ul  style="width:97%; margin-left:3%;">
+                            <h:panelGrid columns="1">
+                                <li> <h:link value="Ajouter un sponsor" outcome="/sponsor/ajouterSponsor.xhtml"/> </li>
+                                <li> <h:link value="Consulter un sponsor" outcome="/sponsor/consulterSponsor.xhtml"/> </li>
+                                <li> <h:link value="Modifier un sponsor" outcome="/sponsor/modifierSponsor.xhtml" style="padding-bottom:3%;"/> </li>
+                            </h:panelGrid>
+                        </ul>
+                    </li>                                                                        
+                </ul>
+            </li>
+            <li  style="width:25%;height:auto; "> Transactions et Témoignages
+                <ul  style="width:97%; height: auto; margin-left:3%; ">  
+                    <li  style="width:100%; color:blue;">Mobile money
+                        <ul  style="width:97%; margin-left:3%;">
+                            <h:panelGrid columns="1">
+                                <li> <h:link value="Ajouter un mobileMoney" outcome="/mobileMoney/ajouterMobileMoney.xhtml"/> </li>
+                                <li> <h:link value="Consulter mobileMoney" outcome="/mobileMoney/consulterMobileMoney.xhtml"/> </li>
+                                <li> <h:link value="Modifier mobileMoney" outcome="/mobileMoney/modifierMobileMoney.xhtml"/> </li>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+
+                    <li  style="width:100%; color:blue;">Paiements
+                        <ul  style="width:97%; margin-left:3%;">
+                            <h:panelGrid columns="1">
+                                <li> <h:link value="Faire un paiement" outcome="/payment/effectuerPaiement.xhtml"/> </li>
+                                <li> <h:link value="Consulter un paiement" outcome="/payment/consulterPaiement.xhtml"/> </li>
+                                <li> <h:link value="Modifier un paiement" outcome="/payment/modifierPaiement.xhtml"/> </li>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+
+                    <li  style="width:100%; color:blue;">Evaluations
+                        <ul  style="width:97%; margin-left:3%;">
+                            <h:panelGrid columns="1">
+                                <li> <h:link value="Ajouter une évaluation" outcome="/ratings/ajouterEvaluation.xhtml"/> </li>
+                                <li> <h:link value="Consulter une évaluation" outcome="/ratings/consulterEvaluation.xhtml"/> </li>
+                                <li> <h:link value="Consulter les évaluations du mois" outcome="/ratings/consulterEvaluationsMoisAnnee.xhtml"/> </li>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+
+                    <li  style="width:100%; color:blue;">Témoignages
+                        <ul  style="width:97%; margin-left:3%;">
+                            <h:panelGrid columns="1">
+                                <li> <h:link value="Ajouter un témoignage" outcome="/testimonial/ajouterTemoignage.xhtml"/> </li>
+                                <li> <h:link value="Consulter un témoignage" outcome="/testimonial/consulterTemoignage.xhtml"/> </li>
+                                <li> <h:link value="Consulter les témoignages du mois" outcome="/testimonial/consulterTemoignagesMoisAnnee.xhtml"/> </li>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li  style="width:25%;height:auto ">Développement en Christ
+                <ul  style="width:97%; height: auto; margin-left:3%; "> 
+                    <li  style="width:100%; color:blue;">Baptèmes
+                        <ul  style="width:97%; margin-left:3%;">
+                            <li  style="width:100%; color:blue;">Requête
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une requête" outcome="/baptism/ajouterRequeteBapteme.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une requête" outcome="/baptism/consulterRequeteBapteme.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une requête" outcome="/baptism/modifierRequeteBapteme.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Préparation
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une préparation" outcome="/baptism/ajouterPreparationBapteme.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une préparation" outcome="/baptism/consulterPreparationBapteme.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une préparation" outcome="/baptism/modifierPreparationBapteme.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Cérémonie
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une cérémonie" outcome="/baptism/ajouterCeremonieBapteme.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une cérémonie" outcome="/baptism/consulterCeremonieBapteme.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une cérémonie" outcome="/baptism/modifierCeremonieBapteme.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li  style="width:100%; color:blue;">Communions
+                        <ul  style="width:97%; margin-left:3%;">
+                            <li  style="width:100%; color:blue;">Requête
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une requête" outcome="/communion/ajouterRequeteCommunion.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une requête" outcome="/communion/consulterRequeteCommunion.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une requête" outcome="/communion/modifierRequeteCommunion.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Préparation
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une préparation" outcome="/communion/ajouterPreparationCommunion.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une préparation" outcome="/communion/consulterPreparationCommunion.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une préparation" outcome="/communion/modifierPreparationCommunion.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Cérémonie
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une cérémonie" outcome="/communion/ajouterCeremonieCommunion.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une cérémonie" outcome="/communion/consulterCeremonieCommunion.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une cérémonie" outcome="/communion/modifierCeremonieCommunion.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li  style="width:100%; color:blue;">Devenir membre
+                        <ul  style="width:97%; margin-left:3%;">
+                            <li  style="width:100%; color:blue;">Requête
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une requête" outcome="/membership/ajouterRequeteMembre.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une requête" outcome="/membership/consulterRequeteMembre.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une requête" outcome="/membership/modifierRequeteMembre.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Préparation
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une préparation" outcome="/membership/ajouterPreparationMembre.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une préparation" outcome="/membership/consulterPreparationMembre.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une préparation" outcome="/membership/modifierPreparationMembre.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Cérémonie
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une cérémonie" outcome="/membership/ajouterCeremonieMembre.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une cérémonie" outcome="/membership/consulterCeremonieMembre.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une cérémonie" outcome="/membership/modifierCeremonieMembre.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li  style="width:25%;height:auto; ">Marriages et Fin de vie
+                <ul  style="width:97%; height: auto; margin-left:3%; "> 
+                    <li  style="width:100%; color:blue;">Marriages
+                        <ul  style="width:97%; margin-left:3%;">
+                            <li  style="width:100%; color:blue;">Requête
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une requête" outcome="/wedding/ajouterRequeteMarriage.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une requête" outcome="/wedding/consulterRequeteMarriage.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une requête" outcome="/wedding/modifierRequeteMarriage.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Préparation
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une préparation" outcome="/wedding/ajouterPreparationMarriage.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une préparation" outcome="/wedding/consulterPreparationMarriage.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une préparation" outcome="/wedding/modifierPreparationMarriage.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Cérémonie
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une cérémonie" outcome="/wedding/ajouterCeremonieMarriage.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une cérémonie" outcome="/wedding/consulterCeremonieMarriage.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une cérémonie" outcome="/wedding/modifierCeremonieMarriage.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li  style="width:100%; color:blue;">Funérailles
+                        <ul  style="width:97%; margin-left:3%;">
+                            <li  style="width:100%; color:blue;">Requête
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une requête" outcome="/funeral/ajouterRequeteFuneraille.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une requête" outcome="/funeral/consulterRequeteFuneraille.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une requête" outcome="/funeral/modifierRequeteFuneraille.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Préparation
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une préparation" outcome="/funeral/ajouterPreparationFuneraille.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une préparation" outcome="/funeral/consulterPreparationFuneraille.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une préparation" outcome="/funeral/modifierPreparationFuneraille.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                            <li  style="width:100%; color:blue;">Cérémonie
+                                <ul  style="width:97%; margin-left:3%;">
+                                    <h:panelGrid columns="1">
+                                        <li> <h:link value="Ajouter une cérémonie" outcome="/funeral/ajouterCeremonieFuneraille.xhtml"/> </li>
+                                        <li> <h:link value="Consulter une cérémonie" outcome="/funeral/consulterCeremonieFuneraille.xhtml"/> </li>
+                                        <li> <h:link value="Modifier une cérémonie" outcome="/funeral/modifierCeremonieFuneraille.xhtml"/> </li>
+                                    </h:panelGrid>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </h:panelGroup>
+</ui:composition>

@@ -1,0 +1,80 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:f="jakarta.faces.core"
+                xmlns:h="jakarta.faces.html"
+                xmlns:c="jakarta.tags.core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/> 
+
+    <div id="visitorServicesGridID" class="visitor-services-grid">
+        <div class="visitor-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <li style="width:100%; height:100%; "> Donations
+                    <ul  style="width:100%;height:100%;"> 
+                        <h:panelGrid columns="1" style="width:100%;height:100%; margin-top:0.5%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                            <li><h:link value="Faire une donation anonyme" outcome="/donation/faireDonationAnonyme.xhtml"/> </li>
+                            <li><h:link value="Faire une donation apr type de service" outcome="/donation/faireDonationTypeService.xhtml"/> </li>
+                            <li><h:link value="Consulter mes donation du mois" outcome="/donation/consulterDonationMois.xhtml"/> </li>
+                            <li><h:link value="Consulter mes donation de l'année" outcome="/donation/consulterDonationAnnee.xhtml"/> </li>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="visitor-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <li style="width:100%; height:100%; "> Membre
+                    <ul  style="width:100%;height:100%;"> 
+                        <h:panelGrid columns="1" style="width:100%;height:100%; margin-top:0.5%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                            <li><h:link value="Faire une requête du statut de membre" outcome="/membership/demanderStatutMembre.xhtml"/> </li>
+                            <li><h:link value="Consulter une requête de statut d'un membre requérant" outcome="/membership/consulterStatutMembre.xhtml"/> </li>
+                            <li><h:link value="Consulter les preparations d'un membre requérant" outcome="/membership/consulterPreparationsMembre.xhtml"/> </li>
+                            <li><h:link value="Consulter la consecration d'un membre à votre charge" outcome="/membership/consulterConsecrationMembreProche.xhtml"/> </li>
+                            <li><h:link value="Consulter votre consecration de membre" outcome="/membership/consulteMaConsecrationMembre.xhtml"/> </li>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="visitor-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <li style="width:100%; height:100%; ">Partenaires
+                    <ul  style="width:100%;height:100%;"> 
+                        <h:panelGrid columns="1" style="width:100%;height:100%; margin-top:0.5%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                            <li> <h:link value="Consulter un partenaire" outcome="/partner/consulterPartenaire.xhtml"/> </li>
+                            <li> <h:link value="Consulter tous les partenaires" outcome="/partner/consulterTousPartenaires.xhtml"/> </li>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div> 
+        <div class="visitor-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <li style="width:100%; height:100%; ">Services du dimanche
+                    <ul  style="width:100%;height:100%;"> 
+                        <h:panelGrid columns="1" style="width:100%;height:100%; margin-top:0.5%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                            <li> <h:link value="Consulter un service par date" outcome="/regularService/consulterServiceParDate.xhtml"/> </li>
+                            <li> <h:link value="Consulter les services par mois et année" outcome="/regularService/consulterSevicesMois.xhtml"/> </li>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div> 
+        <div class="visitor-services-item">
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <li style="width:100%; height:100%; ">Sponsors
+                    <ul  style="width:100%;height:100%;"> 
+                        <h:panelGrid columns="1" style="width:100%;height:100%; margin-top:0.5%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                            <li> <h:link value="Consulter un sponsor" outcome="/sponsor/consulterSponsor.xhtml"/> </li>
+                            <li> <h:link value="Consulter tous les sponsors" outcome="/sponsor/consulterTousSponsors.xhtml"/> </li>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div> 
+    </div> 
+
+</ui:composition>
+

@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="jakarta.faces.core"
+      xmlns:h="jakarta.faces.html"
+      xmlns:c="jakarta.tags.core"
+      xmlns:p="http://primefaces.org/ui" style="float:left; width:100%; height:135%; overflow:auto;">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>Consulter un contact</title>
+
+            <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>
+        </h:head>
+        <h:body class="main" >
+            <h:form id="consultPartnerFormID" class="main" enctype="multipart/form-data">
+                <h:panelGroup id="main" class="main">
+                    <h:panelGroup id="headerLogoID" class="header">
+                        <ui:include src="/template/headerMenu.xhtml"/>
+                    </h:panelGroup >
+                    <h:panelGroup id="contentID" class="contentSection"> 
+                        <p class="contentTitle"> Rechercher un contact</p>
+                        <h:panelGrid  id="searchContactID" columns="2" columnClasses="columnFormat1, columnFormat2" class="panelClientInfos">
+                            <h:outputLabel for="enteredFirstNameID"  value="Prénoms(*): " class="labelFormat"/>
+                            <h:panelGroup>
+                                <h:inputText id="enteredFirstNameID" value="#{contactListener.contactModelView.contact.firstName}" required="true" requiredMessage="Enter the first name" />
+                                <h:message for="enteredFirstNameID" style="color: red;" />
+                            </h:panelGroup>
+                            <h:outputLabel  for="enteredLastNameID" value="Nom(*): " class="labelFormat"/>
+                            <h:panelGroup >
+                                <h:inputText id="enteredLastNameID" value="#{contactListener.contactModelView.contact.lastName}" required="true"  requiredMessage="Enter the last name!"/>
+                                <h:message for="enteredLastNameID" style="color: red;" />
+                            </h:panelGroup>
+                            <h:commandButton id="searchContactButton" value="Rechercher contact" 
+                                             actionListener="#{contactListener.searchAllContactsPerName(evt)}" styleClass="labelFormat">
+                            </h:commandButton>
+
+                        </h:panelGrid>
+                        <h:panelGrid  id="selectContactGridID" columns="2"  columnClasses="columnFormat1, columnFormat2" class="panelClientInfos" rendered="#{contactListener.contactModelView.researchIsVisible}">
+                            <h:outputText value="Nom du contact: " class="labelFormat" /> 
+                            <h:selectOneMenu  id="selectedContactID" value="#{contactListener.contactModelView.contactID}" class="input" >
+                                <f:selectItem itemLabel="sélectionner un contact..." />
+                                <f:selectItems  id="selectContactTypeValues"  value="#{contactListener.contactModelView.contactList}" var="curContact"
+                                                itemValue="#{curContact.contactID}" itemLabel="#{curContact.lastName} #{curContact.firstName}  #{curContact.mainPhone}" />
+                                <f:ajax listener="#{contactListener.selectContact(event)}"/>
+                            </h:selectOneMenu> 
+                        </h:panelGrid>
+ 
+                        <!-- Contact information display -->
+                        <h:panelGrid id="contactPanelID" title="Partner infos" columns="2" cellspacing="5" columnClasses="columnFormat1, columnFormat2" styleClass="panelClientInfos" rendered="#{contactListener.enablePanelContact}">
+                            <h:outputLabel value="Prénom: " class="labelFormat"/>
+                            <h:inputText id="firstName" value="#{contactListener.contactModelView.contact.firstName}" class="input" readonly="true"/>
+                            <h:outputLabel value="Nom: " class="labelFormat"/>
+                            <h:inputText id="lastName" value="#{contactListener.contactModelView.contact.lastName}" class="input" readonly="true"/>
+                            <h:outputLabel value="Genre: " class="labelFormat"/>
+                            <h:inputText id="genre" value="#{contactListener.contactModelView.contact.genre}" class="input" readonly="true"/>
+                            <h:outputLabel value="Téléphone principal: " class="labelFormat"/>
+                            <h:inputText id="mainPhone" value="#{contactListener.contactModelView.contact.mainPhone}" class="input" readonly="true"/>
+                            <h:outputLabel value="Photo: " class="labelFormat"/>
+                            <p:graphicImage id="picture" value="#{imageDBToWeb.getWebImage(contactListener.contactModelView.contact.picture)}" class="input"/>
+                            <h:outputLabel value="Date de création: " class="labelFormat"/>
+                            <p:calendar id="createdDate" value="#{contactListener.contactModelView.contact.createdDate}" pattern="MM/dd/yyyy" class="input" readonly="true"/>
+                            <h:outputLabel value="Date de modification: " class="labelFormat"/>
+                            <p:calendar id="modifiedDate" value="#{contactListener.contactModelView.contact.modifiedDate}" pattern="MM/dd/yyyy" class="input" readonly="true"/>
+                        </h:panelGrid>
+
+                    </h:panelGroup>
+                    <h:panelGroup id="contactID" class="contact">
+                        <ui:include src="/template/contact.xhtml"/>
+                    </h:panelGroup> 
+                    <div id="footerID" class="footer">
+                        <ui:include src="/template/footer.xhtml"/>
+                    </div>
+                </h:panelGroup >
+            </h:form>
+        </h:body>
+    </f:view>
+</html>

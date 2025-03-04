@@ -1,0 +1,32 @@
+<style>
+    .ui-diagram-element {
+        border: 0.1em dotted #E5E4E2;
+        background-color: #EFEEEC;
+        width: 10em;
+        height: 8em;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+        user-select: none;
+    }
+
+    .ui-diagram-element:hover {
+        background-color: #C7C6C4;
+    }
+</style>
+
+<div class="card">
+    <h:form id="form">
+        <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+        <p:diagram value="#{treeView.model}" style="height:600px" styleClass="ui-widget-content"
+                   var="el">
+            <f:facet name="element">
+                <h:outputText value="#{el.name}" style="display:block;margin-top:1em;"/>
+                <p:graphicImage name="demo/images/#{el.image}"/>
+            </f:facet>
+            <p:ajax event="connect" listener="#{diagramEditableView.onConnect}"/>
+            <p:ajax event="disconnect" listener="#{diagramEditableView.onDisconnect}"/>
+            <p:ajax event="connectionChange" listener="#{diagramEditableView.onConnectionChange}"/>
+        </p:diagram>
+    </h:form>
+</div>

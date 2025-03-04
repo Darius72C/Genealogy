@@ -1,0 +1,499 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:f="jakarta.faces.core"
+                xmlns:h="jakarta.faces.html"
+                xmlns:c="jakarta.tags.core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/> 
+
+    <div id="memberServicesGridID" class="member-services-grid">
+        <div class="member-services-itemlist">
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <li style="width:100%; height:100%; "> Mes services
+                    <ul  style="width:100%;height:100%;"> 
+                        <h:panelGrid columns="5" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top;" styleClass="topAligned">
+                            <h:panelGroup>
+                                <li style="width:100%; height:100%; font-weight: bold; color:orangered;"> Baptème
+                                    <ul  style="width:100%;height:100%;"> 
+                                        <h:panelGrid columns="3" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold;color:blue; margin-top:0%;"> Requête
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Faire une requête" outcome="/baptism/demanderRequeteBapteme.xhtml"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ ma requête"  outcome="/baptism/modifierUneRequeteBapteme.xhtml"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière requête"  outcome="/baptism/consulterUneRequete.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une requête mois annee"  outcome="/baptism/consulterUneRequeteMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue; margin-top:0%;"> Préparation
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une préparation" outcome="/baptism/ajouterPreparationBapteme.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une préparation"  outcome="/baptism/modifierUnePreparationBapteme.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière préparation"  outcome="/baptism/consulterUnePreparation.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une préparation mois annee"  outcome="/baptism/consulterUnePreparationMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes mes préparations mois annee"  outcome="/baptism/consulterToutesPreparationsMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue; margin-top:0%;"> Céremonie
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une cérémonie" outcome="/baptism/ajouterCeremonieBapteme.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une cérémonie"  outcome="/baptism/modifierUneCeremonieBapteme.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter père et mère du baptème"  outcome="/baptism/consulterPereMereBapteme.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter ma dernière cérémonie"  outcome="/baptism/consulterUneCeremonie.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une cérémonie mois annee"  outcome="/baptism/consulterUneCeremonieMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes les cérémonies mois annee"  outcome="/baptism/consulterToutesCeremoniesMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+                                        </h:panelGrid>
+                                    </ul>
+                                </li>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <li style="width:100%; height:100%; font-weight: bold; color:orangered;"> Communion
+                                    <ul  style="width:100%;height:100%;"> 
+                                        <h:panelGrid columns="3" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top;  background-color: #ffffb3" styleClass="topAligned">
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Requête
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Faire une requête" outcome="/communion/demanderRequeteCommunion.xhtml"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une requête"  outcome="/communion/modifierUneRequeteCommunion.xhtml"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière requête"  outcome="/communion/consulterUneRequete.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une requête mois annee"  outcome="/communion/consulterUneRequeteMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Préparation
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une préparation" outcome="/communion/ajouterPreparationCommunion.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une préparation"  outcome="/communion/modifierUnePreparationCommunion.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière préparation"  outcome="/communion/consulterUnePreparation.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une préparation mois annee"  outcome="/communion/consulterUnePreparationMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes les préparations mois annee"  outcome="/communion/consulterToutesPreparationsMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Céremonie
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une cérémonie" outcome="/communion/ajouterCeremonieCommunion.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une cérémonie"  outcome="/communion/modifierUneCeremonieCommunion.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter père et mère du baptème"  outcome="/communion/consulterPereMereCommunion.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter ma dernière cérémonie"  outcome="/communion/consulterUneCeremonie.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une cérémonie mois annee"  outcome="/communion/consulterUneCeremonieMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes les cérémonies mois annee"  outcome="/communion/consulterToutesCeremoniesMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+                                        </h:panelGrid>
+                                    </ul>
+                                </li>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <li style="width:100%; height:100%; font-weight: bold; color:orangered;"> Funeraille
+                                    <ul  style="width:100%;height:100%;"> 
+                                        <h:panelGrid columns="3" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Requête
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Faire une requête" outcome="/funeral/demanderRequeteFuneraille.xhtml"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une requête"  outcome="/funeral/modifierUneRequeteFuneraille.xhtml"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière requête"  outcome="/funeral/consulterUneRequete.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une requête mois annee"  outcome="/funeral/consulterUneRequeteMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Préparation
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une préparation" outcome="/funeral/ajouterPreparationFuneraille.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une préparation"  outcome="/funeral/modifierUnePreparationFuneraille.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière préparation"  outcome="/funeral/consulterUnePreparation.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une préparation mois annee"  outcome="/funeral/consulterUnePreparationMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes les préparations mois annee"  outcome="/funeral/consulterToutesPreparationsMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Céremonie
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une cérémonie" outcome="/funeral/ajouterCeremonieFuneraille.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une cérémonie"  outcome="/funeral/modifierUneCeremonieFuneraille.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter père et mère du baptème"  outcome="/funeral/consulterPereMereFuneraille.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter ma dernière cérémonie"  outcome="/funeral/consulterUneCeremonie.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une cérémonie mois annee"  outcome="/funeral/consulterUneCeremonieMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes les cérémonies mois annee"  outcome="/funeral/consulterToutesCeremoniesMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+                                        </h:panelGrid>
+                                    </ul>
+                                </li>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <li style="width:100%; height:100%; font-weight: bold; color:orangered;"> Marriage
+                                    <ul  style="width:100%;height:100%;"> 
+                                        <h:panelGrid columns="3" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Requête
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Faire une requête" outcome="/wedding/demanderRequeteMarriage.xhtml"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une requête"  outcome="/wedding/modifierUneRequeteMarriage.xhtml"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière requête"  outcome="/wedding/consulterUneRequete.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une requête mois annee"  outcome="/wedding/consulterUneRequeteMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Préparation
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une préparation" outcome="/wedding/ajouterPreparationMarriage.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une préparation"  outcome="/wedding/modifierUnePreparationMarriage.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière préparation"  outcome="/wedding/consulterUnePreparation.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une préparation mois annee"  outcome="/wedding/consulterUnePreparationMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes les préparations mois annee"  outcome="/wedding/consulterToutesPreparationsMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Céremonie
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une cérémonie" outcome="/wedding/ajouterCeremonieMarriage.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une cérémonie"  outcome="/wedding/modifierUneCeremonieMarriage.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter père et mère du baptème"  outcome="/wedding/consulterPereMereMarriage.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter ma dernière cérémonie"  outcome="/wedding/consulterUneCeremonie.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une cérémonie mois annee"  outcome="/wedding/consulterUneCeremonieMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes les cérémonies mois annee"  outcome="/wedding/consulterToutesCeremoniesMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+                                        </h:panelGrid>
+                                    </ul>
+                                </li>
+                            </h:panelGroup>
+                            <h:panelGroup>
+                                <li style="width:100%; height:100%; font-weight: bold; color:orangered;"> Membre
+                                    <ul  style="width:100%;height:100%;"> 
+                                        <h:panelGrid columns="4" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Requête
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Faire une requête" outcome="/member/demanderRequeteMembre.xhtml"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une requête"  outcome="/member/modifierUneRequeteMembre.xhtml"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière requête"  outcome="/member/consulterUneRequete.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une requête mois annee"  outcome="/member/consulterUneRequeteMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Préparation
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une préparation" outcome="/member/ajouterPreparationMembre.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une préparation"  outcome="/member/modifierUnePreparationMembre.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter ma dernière préparation"  outcome="/member/consulterUnePreparation.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une préparation mois annee"  outcome="/member/consulterUnePreparationMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes les préparations mois annee"  outcome="/member/consulterToutesPreparationsMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Céremonie
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter une cérémonie" outcome="/member/ajouterCeremonieMembre.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'une cérémonie"  outcome="/member/modifierUneCeremonieMembre.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter père et mère du baptème"  outcome="/member/consulterPereMereMembre.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter ma dernière cérémonie"  outcome="/member/consulterUneCeremonie.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter une cérémonie mois annee"  outcome="/member/consulterUneCeremonieMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter toutes les cérémonies mois annee"  outcome="/member/consulterToutesCeremoniesMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+
+                                            <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                                <li style="font-weight:bold; color:blue;"> Informations sur le Code
+                                                    <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                                        <ul>
+                                                            <li> <h:link value="Ajouter un Code" outcome="/member/ajouterMembre.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/> 
+                                                            </li>
+                                                            <li> <h:link value="MAJ d'un Code"  outcome="/member/modifierMembre.xhtml" rendered="#{accountListener.accountModelView.enableClergy or accountListener.accountModelView.enableAdmin}"/>                                       
+                                                            </li>  
+                                                            <li> <h:link value="Consulter un Code par code"  outcome="/member/consulterMembreParCode.xhtml"/>  
+                                                            </li>
+                                                            <li> <h:link value="Consulter un Code mois annee"  outcome="/member/consulterUnMembreMoisAnnee.xhtml"/>  
+                                                            </li>
+                                                        </ul>
+                                                    </h:panelGrid>
+                                                </li>
+                                            </h:panelGroup>
+                                        </h:panelGrid>
+                                    </ul>
+                                </li>
+                            </h:panelGroup>
+                        </h:panelGrid>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="member-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <h:panelGroup>
+                    <li style="width:100%; height:100%; "> Utilisateurs
+                        <ul  style="width:100%;height:100%;"> 
+                            <h:panelGrid columns="2" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold;color:blue; margin-top:0%;"> Contact
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                            <ul>
+                                                <li> <h:link value="Ajouter un contact" outcome="/user/ajouterContact.xhtml"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ un contact"  outcome="/user/modifierContact.xhtml"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter un contact"  outcome="/user/consulterContact.xhtml"/>  
+                                                </li>
+                                                <li> <h:link value="Consulter les contacts par mois annee"  outcome="/user/consulterContactsMoisAnnee.xhtml"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold; color:blue; margin-top:0%;"> Mobile money
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal; font-weight:normal;">
+                                            <ul>
+                                                <li> <h:link value="Ajouter un mobile money" outcome="/mobileMoney/ajouterMobileMoney.xhtml"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ un mobile money"  outcome="/mobileMoney/modifierMobileMoney.xhtml"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter un mobile money"  outcome="/mobileMoney/consulterMobileMoney.xhtml"/>  
+                                                </li>
+                                                <li> <h:link value="Déactiver un mobile money"  outcome="/mobileMoney/deactiverMobileMoney.xhtml"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                </h:panelGroup>
+            </ul>
+        </div>
+
+        <div class="member-services-item"> 
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <h:panelGroup>
+                    <li style="width:100%; height:100%; "> Types documents et services
+                        <ul  style="width:100%;height:100%;"> 
+                            <h:panelGrid columns="2" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold;color:blue; margin-top:0%;"> Types de document
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                            <ul>
+                                                <li> <h:link value="Ajouter un type de document" outcome="/type/ajouterTypeDoc.xhtml"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ un type de document"  outcome="/type/modifierTypeDoc.xhtml"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter un type document"  outcome="/type/consulterTypeDoc.xhtml"/>  
+                                                </li>
+                                                <li> <h:link value="Déactiver type document"  outcome="/type/deactiverTypeDoc.xhtml"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold; color:blue; margin-top:0%;"> Type de service
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal; font-weight:normal;">
+                                            <ul>
+                                                <li> <h:link value="Ajouter un type de service" outcome="/type/ajouterTypeService.xhtml"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ un type de service"  outcome="/type/modifierTypeService.xhtml"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter un type de service"  outcome="/type/consulterTypeService.xhtml"/>  
+                                                </li>
+                                                <li> <h:link value="Déactiver type de service"  outcome="/type/deactiverTypeService.xhtml"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                </h:panelGroup>
+            </ul>
+        </div> 
+
+        <div class="member-services-item">
+            <ul style="width:100%; height:100%; vertical-align:top;">
+                <h:panelGroup>
+                    <li style="width:100%; height:100%; "> Testimonies et appréciations
+                        <ul  style="width:100%;height:100%;"> 
+                            <h:panelGrid columns="1" cellspacing="5" cellpadding="5" style="width:150%;height:100%; top:0%;margin-top:0%;padding-top:0%;vertical-align:top; background-color: #ffffb3" styleClass="topAligned">
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold;color:blue; margin-top:0%;"> Testimonies
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal;">
+                                            <ul>
+                                                <li> <h:link value="Ajouter une testimonie" outcome="/testimonial/ajouterTestimonie.xhtml"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ une testimonie"  outcome="/testimonial/modifierTestimonie.xhtml"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter une testimonie"  outcome="/testimonial/consulterTestimonie.xhtml"/>  
+                                                </li>
+                                                <li> <h:link value="Consulter les testimonies par mois annee"  outcome="/testimonial/consulterTestimoniesMoisAnnee.xhtml"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+
+                                <h:panelGroup style="width:75%; height:100%; margin-top:0.5%;padding-top:0.5%;vertical-align:top;">
+                                    <li style="font-weight:bold; color:blue; margin-top:0%;"> Evaluations
+                                        <h:panelGrid style="margin-top:0.5%;padding-top:0.5%;vertical-align:top; font-weight:normal; font-weight:normal;">
+                                            <ul>
+                                                <li> <h:link value="Ajouter une évaluation" outcome="/ratings/ajouterEvaluation.xhtml"/> 
+                                                </li>
+                                                <li> <h:link value="MAJ une évaluation"  outcome="/ratings/modifierEvaluation.xhtml"/>                                       
+                                                </li>  
+                                                <li> <h:link value="Consulter une évaluation"  outcome="/ratings/consulterEvaluation.xhtml"/>  
+                                                </li>
+                                                <li> <h:link value="Consulter les évaluations mois année"  outcome="/ratings/consulterEvaluationsMoisAnnee.xhtml"/>  
+                                                </li>
+                                            </ul>
+                                        </h:panelGrid>
+                                    </li>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </ul>
+                    </li>
+                </h:panelGroup>
+            </ul>
+        </div> 
+    </div> 
+</ui:composition>
+

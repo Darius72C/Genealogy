@@ -1,0 +1,46 @@
+<ui:composition  xmlns="https://www.w3.org/1999/xhtml"
+                 xmlns:ui="jakarta.faces.facelets"
+                 xmlns:f="jakarta.faces.core"
+                 xmlns:h="jakarta.faces.html"
+                 xmlns:c="jakarta.tags.core"
+                 xmlns:p="http://primefaces.org/ui">
+
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>  
+
+    <h:panelGroup id="sponsorInfosID" style="width:100%; height:100%;">
+        <p class="sponsorPartnerTitle">Sponsors</p>
+        <c:set var="firstIndex" value="#{sponsorListener.sponsorModelView.index}"/>
+        <c:set var="firstSponsor" value="#{sponsorListener.sponsorModelView.getNextSponsor(firstIndex)}"/>
+        <c:set var="secondSponsor" value="#{sponsorListener.sponsorModelView.getNextSponsor(firstIndex+1)}"/>
+        <c:set var="thirdSponsor" value="#{sponsorListener.sponsorModelView.getNextSponsor(firstIndex+2)}"/>
+        <h:panelGroup  id="firstSponsorID" class="newsDiv">  
+            <h:panelGrid id="sponsor1GridID" columns="2" columnClasses="columnFormatPer2, columnFormatPer2">
+                <h:panelGroup id="sponsor1ImageGroupID" style="width:100%; height:89%;">
+                    <p:graphicImage id="sponsor1LogoID" value="#{imageDBToWeb.getWebImage(firstSponsor.logo)}" style="width:80%; height:89%;" rendered="#{contactListener.contactModelView.renderImage}"/>                   
+                </h:panelGroup>
+                <h:outputText value="#{firstSponsor.description}"/>
+            </h:panelGrid>
+        </h:panelGroup >
+        <h:panelGroup  id="secondSponsorID" class="newsDiv">  
+            <h:panelGrid id="sponsor2GridID" columns="2" columnClasses="columnFormatPer2, columnFormatPer2">
+                <h:panelGroup id="sponsor2ImageGroupID" style="width:100%; height:89%;">
+                    <p:graphicImage id="sponsor2LogoID" value="#{imageDBToWeb.getWebImage(secondSponsor.logo)}" style="width:80%; height:89%;" rendered="#{contactListener.contactModelView.renderImage}"/>                   
+                </h:panelGroup>
+                <h:outputText value="#{secondSponsor.description}"/>
+            </h:panelGrid>        
+        </h:panelGroup >
+        <h:panelGroup  id="thirdSponsorID" class="newsDiv">
+            <h:panelGrid id="sponsor3GridID" columns="2" columnClasses="columnFormatPer2, columnFormatPer2">
+                <h:panelGroup id="sponsor3ImageGroupID" style="width:100%; height:89%;">
+                    <p:graphicImage id="sponsor3LogoID" value="#{imageDBToWeb.getWebImage(thirdSponsor.logo)}" style="width:80%; height:89%;" rendered="#{contactListener.contactModelView.renderImage}"/>                   
+                </h:panelGroup>
+                <h:outputText value="#{thirdSponsor.description}"/>
+            </h:panelGrid>  
+        </h:panelGroup >
+        <p:poll interval="60" listener="#{sponsorListener.sponsorModelView.updateIndex(firstIndex)}" process="@this" update="sponsorInfosID"/>
+
+    </h:panelGroup>
+
+</ui:composition>
+

@@ -1,0 +1,17 @@
+<ui:composition xmlns="https://www.w3.org/1999/xhtml"
+                xmlns:ui="jakarta.faces.facelets"
+                xmlns:f="jakarta.faces.core"
+                xmlns:h="jakarta.faces.html"
+                xmlns:c="jakarta.tags.core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>
+
+    <h:panelGroup id="footerGroupID" style="width:100%; height:100%;">
+        <h:panelGrid id="footerPanelID" columns="1" cellpadding="5" style="width:100%; height:100%;">
+            <h:outputText id="copyRightID" value="@Copyright, December 2023, LITEN Sarl."/>
+        </h:panelGrid >
+    </h:panelGroup >
+</ui:composition>
+
+

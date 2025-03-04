@@ -1,0 +1,19 @@
+<ui:composition  xmlns="https://www.w3.org/1999/xhtml"
+                 xmlns:ui="jakarta.faces.facelets"
+                 xmlns:f="jakarta.faces.core"
+                 xmlns:h="jakarta.faces.html"
+                 xmlns:c="jakarta.tags.core"
+                 xmlns:p="http://primefaces.org/ui">
+    <link rel="stylesheet" href="#{request.contextPath}/css/eglise.css"/>
+
+    <h:panelGroup id="videoDivID" layout="block" styleClass="videoSize">
+        <c:set var="currentVideoUrl" value="http://localhost:8080#{request.contextPath}/videos/#{videoListener.currentVideoUrl}" />
+        <video value="#{currentVideoUrl}" controls="true" autoplay="true" class="videoSize">
+             <source src="#{currentVideoUrl}" type="video/mp4"/>
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Polling mechanism to switch videos every 60 seconds -->
+        <p:poll interval="260" listener="#{videoListener.nextVideo}" update="videoDivID" />
+    </h:panelGroup>
+</ui:composition>
